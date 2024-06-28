@@ -30,7 +30,10 @@ stages:
       inputs:
         versionSpec: '3.8'
         addToPath: true
-        
+      
+    - script: curl -sS https://getcomposer.org/installer | php
+      displayName: 'Install Composer'
+      
     - script: composer install --no-interaction --prefer-dist
       workingDirectory: $(rootFolder)
       displayName: 'Composer install'
