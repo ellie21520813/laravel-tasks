@@ -4,7 +4,7 @@ trigger:
 variables:
   releaseBranchName: 'main'
   phpVersion: '8.2'
-  rootFolder: $(System.DefaultWorkingDirectory)
+  rootFolder: 'public'
   resourceGroup: 'msdocs-laravel-mysql-rg'
 
 pool:
@@ -53,7 +53,7 @@ stages:
 
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: $(System.DefaultWorkingDirectory)
+        rootFolderOrFile: $'public'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
