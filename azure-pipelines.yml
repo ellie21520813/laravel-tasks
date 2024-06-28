@@ -79,10 +79,7 @@ stages:
           steps:
           - download: current
             artifact: drop
-            
-          - script: |
-              az webapp config set --resource-group msdocs-laravel-rg --name msdocs-laravel-task-32333 --startup-file 'cp /home/site/wwwroot/default /etc/nginx/sites-available/default && chmod 777 /etc/nginx/sites-available/default && service nginx reload'
-              displayName: 'Update Web App Configuration'
+          
           - script: |
               curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
             displayName: 'Install Azure CLI'
