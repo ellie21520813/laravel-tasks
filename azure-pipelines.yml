@@ -30,11 +30,6 @@ stages:
       inputs:
         versionSpec: '3.8'
         addToPath: true
-      
-    - script: |
-        curl -sS https://getcomposer.org/installer -o composer-setup.php
-        php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-      displayName: 'Install Composer'
 
     - script: composer install --no-interaction --prefer-dist
       workingDirectory: $(rootFolder)
