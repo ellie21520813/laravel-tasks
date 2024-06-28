@@ -4,7 +4,7 @@ trigger:
 variables:
   releaseBranchName: 'main'
   phpVersion: '8.2'
-  rootFolder: 'site\wwwroot\public'
+  rootFolder: $(System.DefaultWorkingDirectory)/wwwroot/public
   resourceGroup: 'msdocs-laravel-mysql-rg'
 
 pool:
@@ -30,6 +30,10 @@ stages:
       inputs:
         versionSpec: '3.8'
         addToPath: true
+        
+    - script: composer install --no-interaction --prefer-dist
+      workingDirectory: $(rootFolder)
+      displayName: 'Composer install'
 
     - script: |
         sudo apt-get update
@@ -47,7 +51,7 @@ stages:
 
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/wwwroot/public'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
