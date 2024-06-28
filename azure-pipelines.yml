@@ -4,7 +4,7 @@ trigger:
 variables:
   releaseBranchName: 'main'
   phpVersion: '8.2'
-  rootFolder: $(System.DefaultWorkingDirectory)/wwwroot/public
+  rootFolder: 'site\wwwroot\public'
   resourceGroup: 'msdocs-laravel-mysql-rg'
 
 pool:
